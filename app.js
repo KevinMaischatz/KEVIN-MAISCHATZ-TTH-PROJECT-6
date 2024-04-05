@@ -19,9 +19,9 @@ btnReset.addEventListener('click', () => {
     start.style.display = 'none';
 });
 
-function getRandomPhaseAsArray (arr) {
-    let randomNumber = Math.floor ( Math.random() * arr.length)
-    let randomPhrase = arr[randomNumber];
+function getRandomPhraseAsArray (phrases) {
+    let randomNumber = Math.floor ( Math.random() * phrases.length)
+    let randomPhrase = phrases[randomNumber];
     const split = randomPhrase.split("");
     return split;
 };
@@ -29,17 +29,17 @@ function getRandomPhaseAsArray (arr) {
 const phraseArray = getRandomPhraseAsArray(phrases);
 const phraseLi = phrase.querySelector('#phrase ul');
 
-function addPhraseToDisplay (arr) {
+function addPhraseToDisplay(arr) {
     for (let i = 0; i < arr.length; i++) {
         const list = document.createElement('li');
         let text = arr[i];
         list.textContent = text;
         if (text === ' ') {
-            list.classname = 'letter';
+            list.className = 'space';
         } else {
-            list.classname = 'space';
+            list.className = 'letter';
         }
-        phraseli.appendChild(list);
+        phraseLi.appendChild(list);
     }
 };
 
@@ -49,7 +49,7 @@ function checkLetter (clicked) {
     const checkLetter = document.getElementsByClassName ('letter');
     let match = null;
     for (let i = 0; i < checkLetter.length; i++) {
-       if ( checkLetter [i].textContent.toLowerCas() === clicked.textContent ) {
+       if ( checkLetter [i].textContent.toLowerCase() === clicked.textContent ) {
         checkLetter[i].classList.add('show');
         match = checkLetter.textContent;
        }
@@ -73,8 +73,8 @@ qwerty.addEventListener('click', (e) => {
 }) 
 
 function checkWin () {
-    const letter = document.getElementById ('letter');
-    const show = document.getElementById ('show');
+    const letter = document.getElementsByClassName ('letter');
+    const show = document.getElementsByClassName ('show');
     if (letter.length === show.length) {
         overlay.classList.add ('win');
         overlay.style.display = 'flex';
