@@ -60,6 +60,7 @@ function checkLetter (clicked) {
 qwerty.addEventListener('click', (e) => {
    if (e.target.tagName === 'BUTTON') {
     e.target.className = 'chosen';
+    e.target.disabled = true;
     e.target.className =  'true';
     const letterFound = checkLetter(e.target);
     letterFound;
